@@ -1,0 +1,58 @@
+apply plugin: 'com.android.application'
+// ... other plugins ...
+
+android {
+    compileSdk 34
+    namespace "com.yourcompany.oeosmartapp"   // ADD THIS LINE
+
+    defaultConfig {
+        applicationId "com.yourcompany.oeosmartapp"
+        minSdk 21
+        targetSdk 34
+        versionCode 1
+        versionName "1.0.0"
+    }
+
+    // ... other android settings ...
+
+    signingConfigs {
+        release {
+            // Will be filled from key.properties
+        }
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+    // ... your dependencies ...
+}
+
+// ======== ADD THIS BLOCK AT THE VERY BOTTOM (AFTER dependencies) ========
+def keystoreProperties = new Properties()
+def keystorePropertiesFile = rootProject.file('key.properties')
+if (keystorePropertiesFile.exists()) {
+    keystoreProperties.load(new FileInputStream(keystorePropertiesFile))
+}
+
+android {
+    signingConfigs {
+        release {
+            storeFile file(keystoreProperties['storeFile'])
+            storePassword keystoreProperties['storePassword']
+            keyAlias keystoreProperties['keyAlias']
+            keyPassword keystoreProperties['keyPassword']
+        }
+    }
+    buildTypes {
+        release {
+            signingConfig signingConfigs.release
+            minifyEnabled false
+        }
+    }
+}

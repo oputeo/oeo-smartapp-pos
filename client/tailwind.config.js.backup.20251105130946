@@ -1,0 +1,36 @@
+﻿/** @type {import('tailwindcss').Config} */
+module.exports = {
+  darkMode: 'class',
+  content: [
+    "./index.html",
+    "./src/**/*.{js,jsx,ts,tsx}"
+  ],
+  theme: {
+    extend: {
+      // custom theme values can be added here
+    },
+  },
+  plugins: [
+    require('daisyui')
+  ],
+  daisyui: {
+    themes: [
+      {
+        light: {
+          "primary": "#bfa14a",
+          "secondary": "#f8e9a1",
+          "accent": "#ffd166",
+          "neutral": "#111827",
+          "base-100": "#ffffff",
+          "info": "#3abff8",
+          "success": "#36d399",
+          "warning": "#fbbd23",
+          "error": "#ef4444"
+        }
+      },
+      "dark"
+    ],
+    darkTheme: "dark",
+    base: true
+  }
+};

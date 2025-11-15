@@ -1,0 +1,24 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  .btn {
+    @apply px-4 py-2 rounded-lg font-medium transition-all;
+  }
+  .btn-success {
+    @apply bg-green-600 text-white hover:bg-green-700;
+  }
+  .btn-info {
+    @apply bg-blue-600 text-white hover:bg-blue-700;
+  }
+  .btn-warning {
+    @apply bg-yellow-600 text-white hover:bg-yellow-700;
+  }
+  .input {
+    @apply border rounded-lg px-3 py-2 w-full;
+  }
+  .select {
+    @apply border rounded-lg px-3 py-2;
+  }
+}
