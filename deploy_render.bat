@@ -1,22 +1,22 @@
 @echo off
-echo DEPLOYING OEO SMARTAPP TO RENDER (FREE)...
+echo FIXING RENDER BUILD...
 cd /d C:\Users\OPUTE\projects\OEO-SmartApp
 echo.
-echo [1/3] Installing deps...
+echo [1/2] Installing all deps...
 call npm install
+cd client
+call npm install
+cd ..
 echo.
-echo [2/3] Building...
+echo [2/2] Building + Pushing...
 call npm run build
-echo.
-echo [3/3] Pushing...
 git add .
-git commit -m "deploy: render.com - free tier"
+git commit -m "fix: render.com - install client deps"
 git push
 echo.
-echo GO TO: https://dashboard.render.com
-echo CREATE WEB SERVICE → CONNECT GITHUB → SELECT REPO
-echo BUILD CMD: npm run build
-echo START CMD: npm start
+echo GO TO RENDER DASHBOARD
+echo UPDATE BUILD COMMAND:
+echo npm install && cd client && npm install && npm run build
 echo.
 echo LIVE: https://oeo-smartapp-pos.onrender.com
 echo.
