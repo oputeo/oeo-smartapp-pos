@@ -1,23 +1,22 @@
 @echo off
-echo DEPLOYING FINAL AI QUICK MENU...
+echo DEPLOYING MERGED + AI STOCK COUNT...
 cd /d C:\Users\OPUTE\projects\OEO-SmartApp
 
-echo [1/4] Merging Advances...
-echo See EmployeeAdvance.tsx > client\src\ai\EmployeeAdvance.tsx
+echo [1/3] Merging Cash + Salary Advance...
+echo See CashSale.tsx + StaffAdvance.tsx > client\src\ai\merged\
 
-echo [2/4] Adding Cash Sale...
-echo See CashSale.tsx > client\src\ai\CashSale.tsx
+echo [2/3] Adding AI Stock Count...
+echo See AIStockCount.tsx > client\src\ai\stock\AIStockCount.tsx
 
-echo [3/4] Adding AI Stock Count...
-echo See AIStockCount.tsx > client\src\ai\AIStockCount.tsx
+echo [3/3] Updating Quick Menu...
+echo 6 AI Buttons > client\src\components\QuickMenu.tsx
 
-echo [4/4] Pushing to Render...
 git add .
-git commit -m "feat: final quick menu - merged advance + cash sale + AI stock count"
+git commit -m "feat: merge cash/salary advance + AI stock count"
 git push
 
 echo.
 echo LIVE IN 3 MINUTES: https://oeo-smartapp-pos.onrender.com
-echo 100 PHONES → AI EMPIRE FULLY LIVE
+echo 100 PHONES → ONE-TAP AI CONTROL
 echo.
 pause
