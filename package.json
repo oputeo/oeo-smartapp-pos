@@ -2,11 +2,40 @@
   "name": "oeo-smartapp",
   "version": "1.0.0",
   "private": true,
+  "description": "Offline POS App | PDF Receipts | QR Scan | 100 Phones | NG",
+  "author": {
+    "name": "Eric Opute",
+    "email": "ericopute@gmail.com",
+    "url": "https://x.com/eric_opute"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/eric_opute/OEO-SmartApp.git"
+  },
+  "homepage": "https://oeo-smartapp.up.railway.app",
+  "keywords": [
+    "pos",
+    "offline",
+    "react",
+    "capacitor",
+    "pwa",
+    "pdf-print",
+    "qr-scan",
+    "nigeria"
+  ],
   "scripts": {
     "dev": "concurrently \"npm run server\" \"npm run client\"",
     "server": "cd server && npm run dev",
     "client": "cd client && npm run dev",
-    "build": "cd client && npm run build"
+    "build": "cd client && npm run build",
+    "start": "cd server && node index.js",
+    "preview": "cd client && npm run preview"
+  },
+  "dependencies": {
+    "@tanstack/react-query": "^5.90.9",
+    "@tanstack/react-query-devtools": "^5.90.2",
+    "axios": "^1.13.2",
+    "express": "^4.21.2"
   },
   "devDependencies": {
     "@types/node": "^24.10.1",
@@ -15,9 +44,18 @@
     "postcss": "^8.5.6",
     "tailwindcss": "^4.1.17"
   },
-  "dependencies": {
-    "@tanstack/react-query": "^5.90.9",
-    "@tanstack/react-query-devtools": "^5.90.2",
-    "axios": "^1.13.2"
-  }
+  "engines": {
+    "node": ">=18"
+  },
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/eric_opute/OEO-SmartApp/issues"
+  },
+  "contributors": [
+    {
+      "name": "Eric Opute",
+      "twitter": "@eric_opute",
+      "country": "NG"
+    }
+  ]
 }
