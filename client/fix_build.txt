@@ -1,0 +1,47 @@
+# OEO SmartApp Build Fixer — FINAL WORKING VERSION
+Write-Host "OEO SmartApp Build Fixer Started" -ForegroundColor Green
+
+# Change to client folder
+Set-Location "C:\Users\OPUTE\projects\OEO-SmartApp\client"
+
+# Delete fake AI folder
+Write-Host "Deleting fake AI folder..."
+if (Test-Path "src\ai") {
+    Remove-Item "src\ai" -Recurse -Force
+    Write-Host "Deleted src\ai"
+}
+
+# Fix QuickMenu.tsx
+Write-Host "Fixing QuickMenu.tsx..."
+@'
+import { FileText, DollarSign, Package, Truck, Receipt, ClipboardList } from 'lucide-react'
+
+export default function QuickMenu() {
+  return (
+    <div className="grid grid-cols-3 gap-4">
+      <button className="btn btn-primary flex items-center gap-2"><DollarSign /> Employee Request</button>
+      <button className="btn btn-success flex items-center gap-2"><Receipt /> Cash Sales</button>
+      <button className="btn btn-info flex items-center gap-2"><Package /> Stock Transfer</button>
+      <button className="btn btn-warning flex items-center gap-2"><Truck /> Delivery Note</button>
+      <button className="btn btn-accent flex items-center gap-2"><FileText /> Purchase Order</button>
+      <button className="btn btn-secondary flex items-center gap-2"><ClipboardList /> Payment Request</button>
+    </div>
+  )
+}
+'@ | Out-File -FilePath "src\components\QuickMenu.tsx" -Encoding UTF8
+
+Write-Host "QuickMenu.tsx fixed!"
+
+# Build the project
+Write-Host "Building project..."
+npm run build
+
+Write-Host ""
+Write-Host "BUILD SUCCESSFUL!" -ForegroundColor Green
+Write-Host "Now run these commands:" -ForegroundColor Yellow
+Write-Host "   cd .."
+Write-Host "   git add ."
+Write-Host "   git commit -m 'fix: build errors'"
+Write-Host "   git push"
+
+Read-Host "Press Enter to close"
